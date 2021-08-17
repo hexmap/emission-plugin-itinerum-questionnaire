@@ -30,18 +30,7 @@ module.exports = {
       {
         test: /\.tsx?$/,
         exclude: path.resolve(__dirname, '/node_modules/'),
-        use: [
-          'ts-loader',
-          // {
-          //   loader: 'babel-loader',
-          //   options: {
-          //     presets: [
-          //       '@babel/preset-env',
-          //       '@babel/preset-react',
-          //     ]
-          //   }
-          // }
-        ]
+        use: 'ts-loader'
       }
     ]
   },

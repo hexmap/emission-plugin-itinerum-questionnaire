@@ -1,0 +1,335 @@
+{
+    "user": "New user successfully registered.",
+    "uuid": "4fd9188e-a578-48b8-8488-498b2ee7ebf2",
+    "contactEmail": "",
+    "defaultAvatar": "/assets/static/defaultAvatar.png",
+    "avatar": "",
+    "survey": {
+        "schema": {
+            "type": "object",
+            "properties": {
+                "address": {
+                    "title": "address",
+                    "description": "surveyWizard.components.address.prompt",
+                    "required": true,
+                    "enum": null
+                },
+                "age": {
+                    "title": "Age",
+                    "description": "What is your age bracket?",
+                    "required": true,
+                    "enum": [
+                        "16-24",
+                        "25-34",
+                        "35-44",
+                        "45-54",
+                        "55-64",
+                        "65-74",
+                        "75-84",
+                        "85+"
+                    ]
+                },
+                "checkbox": {
+                    "title": "checkbox",
+                    "description": "surveyWizard.components.checkbox.prompt",
+                    "required": true,
+                    "enum": [
+                        "Choice 1",
+                        "Choice 2"
+                    ]
+                },
+                "dropdown": {
+                    "title": "dropdown",
+                    "description": "surveyWizard.components.dropdown.prompt",
+                    "required": true,
+                    "enum": [
+                        "Choice 1",
+                        "Choice 2"
+                    ]
+                },
+                "email": {
+                    "title": "Email",
+                    "description": "Please enter your email",
+                    "required": true,
+                    "enum": null
+                },
+                "gender": {
+                    "title": "Gender",
+                    "description": "What is your gender?",
+                    "required": true,
+                    "enum": [
+                        "Male",
+                        "Female",
+                        "Other/Neither",
+                        "Does not wish to respond"
+                    ]
+                },
+                "location_home": {
+                    "title": "location_home",
+                    "description": "Please enter your home location on the map",
+                    "required": true,
+                    "enum": null
+                },
+                "location_study": {
+                    "title": "location_study",
+                    "description": "Please enter your study location on the map",
+                    "required": true,
+                    "enum": null
+                },
+                "location_work": {
+                    "title": "location_work",
+                    "description": "Please enter your work location on the map",
+                    "required": true,
+                    "enum": null
+                },
+                "member_type": {
+                    "title": "member_type",
+                    "description": "What is your primary occupation?",
+                    "required": true,
+                    "enum": [
+                        "A full-time worker",
+                        "A part-time worker",
+                        "A student",
+                        "A student and a worker",
+                        "Retired",
+                        "At home",
+                        "Other"
+                    ]
+                },
+                "number": {
+                    "title": "number",
+                    "description": "surveyWizard.components.number.prompt",
+                    "required": true,
+                    "enum": null
+                },
+                "text": {
+                    "title": "text",
+                    "description": "surveyWizard.components.textBox.prompt",
+                    "required": true,
+                    "enum": null
+                },
+                "travel_mode_alt_study": {
+                    "title": "travel_mode_alt_study",
+                    "description": "Do you use any alternative mode of travel to your studies?",
+                    "required": true,
+                    "enum": [
+                        "N/A",
+                        "Walk",
+                        "Bicycle",
+                        "Public Transit",
+                        "Car",
+                        "Car & Public Transit",
+                        "Other Mode",
+                        "Other Combinations"
+                    ]
+                },
+                "travel_mode_alt_work": {
+                    "title": "travel_mode_alt_work",
+                    "description": "Do you use any alternative mode of travel to work?",
+                    "required": true,
+                    "enum": [
+                        "N/A",
+                        "Walk",
+                        "Bicycle",
+                        "Public Transit",
+                        "Car",
+                        "Car & Public Transit",
+                        "Other Mode",
+                        "Other Combinations"
+                    ]
+                },
+                "travel_mode_study": {
+                    "title": "travel_mode_study",
+                    "description": "How do you typically commute to your studies?",
+                    "required": true,
+                    "enum": [
+                        "Walk",
+                        "Bicycle",
+                        "Public Transit",
+                        "Car",
+                        "Car & Public Transit",
+                        "Other Mode",
+                        "Other Combinations"
+                    ]
+                },
+                "travel_mode_work": {
+                    "title": "travel_mode_work",
+                    "description": "How do you typically commute to your work location?",
+                    "required": true,
+                    "enum": [
+                        "Walk",
+                        "Bicycle",
+                        "Public Transit",
+                        "Car",
+                        "Car & Public Transit",
+                        "Other Mode",
+                        "Other Combinations"
+                    ]
+                }
+            },
+            "dependencies": {
+                "address": {},
+                "age": {},
+                "checkbox": {},
+                "dropdown": {},
+                "email": {},
+                "gender": {},
+                "location_home": {},
+                "location_study": {
+                    "member_type": [
+                        "A student",
+                        "A student and a worker"
+                    ]
+                },
+                "location_work": {
+                    "member_type": [
+                        "A full-time worker",
+                        "A part-time worker",
+                        "A student and a worker"
+                    ]
+                },
+                "member_type": {},
+                "number": {},
+                "text": {},
+                "travel_mode_alt_study": {
+                    "member_type": [
+                        "A student",
+                        "A student and a worker"
+                    ]
+                },
+                "travel_mode_alt_work": {
+                    "member_type": [
+                        "A full-time worker",
+                        "A part-time worker",
+                        "A student and a worker"
+                    ]
+                },
+                "travel_mode_study": {
+                    "member_type": [
+                        "A student",
+                        "A student and a worker"
+                    ]
+                },
+                "travel_mode_work": {
+                    "member_type": [
+                        "A full-time worker",
+                        "A part-time worker",
+                        "A student and a worker"
+                    ]
+                }
+            },
+            "propertyOrder": [
+                "location_home",
+                "member_type",
+                "location_work",
+                "travel_mode_work",
+                "travel_mode_alt_work",
+                "location_study",
+                "travel_mode_study",
+                "travel_mode_alt_study",
+                "gender",
+                "age",
+                "email",
+                "dropdown",
+                "checkbox",
+                "number",
+                "address",
+                "text"
+            ]
+        },
+        "options": {
+            "fields": {
+                "address": {
+                    "type": "map-marker"
+                },
+                "age": {
+                    "type": "select"
+                },
+                "checkbox": {
+                    "type": "select-many"
+                },
+                "dropdown": {
+                    "type": "select"
+                },
+                "email": {
+                    "type": "email"
+                },
+                "gender": {
+                    "type": "select"
+                },
+                "location_home": {
+                    "type": "map-marker"
+                },
+                "location_study": {
+                    "type": "map-marker"
+                },
+                "location_work": {
+                    "type": "map-marker"
+                },
+                "member_type": {
+                    "type": "select"
+                },
+                "number": {
+                    "type": "integer"
+                },
+                "text": {
+                    "type": "text-area"
+                },
+                "travel_mode_alt_study": {
+                    "type": "select"
+                },
+                "travel_mode_alt_work": {
+                    "type": "select"
+                },
+                "travel_mode_study": {
+                    "type": "select"
+                },
+                "travel_mode_work": {
+                    "type": "select"
+                }
+            }
+        }
+    },
+    "prompt": {
+        "maxDays": 0,
+        "maxPrompts": 0,
+        "numPrompts": 3,
+        "prompt": [
+            {
+                "prompt": "prompts.components.dropdown.prompt",
+                "id": 1,
+                "colName": "dropdown",
+                "answerRequired": true,
+                "choices": [
+                    "Choice 1",
+                    "Choice 2"
+                ]
+            },
+            {
+                "prompt": "prompts.components.checkbox.prompt",
+                "id": 2,
+                "colName": "checkbox",
+                "answerRequired": true,
+                "choices": [
+                    "Choice 1",
+                    "Choice 2"
+                ]
+            },
+            {
+                "prompt": "prompts.components.textBox.prompt",
+                "id": 5,
+                "colName": "text",
+                "answerRequired": true,
+                "choices": [
+                    ""
+                ]
+            }
+        ]
+    },
+    "lang": "en",
+    "aboutText": "description",
+    "termsOfService": "terms of service",
+    "surveyName": "test",
+    "recordAcceleration": false,
+    "recordMode": false
+}
