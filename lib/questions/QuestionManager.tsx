@@ -79,14 +79,7 @@ const QuestionManager = (props: QuestionManagerProps) => {
         setQuestionIdx(questionIdx - 1);
     }
 
-    const placeholderQuestion = (
-        <Paper className={classes.placeholder} elevation={1}>
-            <Box>
-                <Typography className={classes.placeholderTitle}>Question Placeholder</Typography>
-            </Box>
-            <Typography className={classes.placeholderText}>Drop your first question here to get started.</Typography>
-        </Paper>
-    );
+    console.log(props)
 
     // memoize the stack's elements to attempt to limit re-writes when dragging
     // question buttons to form. There is a slight lag due to the css background color
@@ -101,13 +94,21 @@ const QuestionManager = (props: QuestionManagerProps) => {
             const fieldType = fields[propertyName].type;
             const Question = questionMap[fieldType];
             const questionProps = properties[propertyName];
-            console.log(propertyName, fieldType);
 
             return (
                 <Question {...questionProps} />
             );
         })        
     }, [properties]) as JSX.Element[];
+
+    const placeholderQuestion = (
+        <Paper className={classes.placeholder} elevation={1}>
+            <Box>
+                <Typography className={classes.placeholderTitle}>Question Placeholder</Typography>
+            </Box>
+            <Typography className={classes.placeholderText}>Drop your first question here to get started.</Typography>
+        </Paper>
+    );
 
     return (
         <div>

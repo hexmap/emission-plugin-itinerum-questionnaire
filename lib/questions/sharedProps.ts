@@ -3,8 +3,8 @@
  */
 
 export interface SharedQuestionProps {
-    id: number;
     title: string;
+    description: string;
     enum: string[];
     required: boolean;
 }

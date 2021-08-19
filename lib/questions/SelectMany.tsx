@@ -38,26 +38,21 @@ const SelectManyQuestion = (props: SharedQuestionProps) => {
     };
     
     const { gilad, jason, antoine } = state;
-    const error = [gilad, jason, antoine].filter((v) => v).length !== 2;    
+    const error = [gilad, jason, antoine].filter((v) => v).length !== 2;
 
+    console.log(props);
     return (
-        <FormControl component="fieldset" className={classes.formControl}>
-            <FormLabel component="legend">Assign responsibility</FormLabel>
+        <FormControl required error={error} component="fieldset" className={classes.formControl}>
+            <FormLabel component="legend">{props.title}</FormLabel>
             <FormGroup>
+            { props.enum.map(optionText => (
                 <FormControlLabel
-                    control={<Checkbox checked={gilad} onChange={handleChange} name="gilad" />}
-                    label="Gilad Gray"
+                    control={<Checkbox checked={gilad} onChange={handleChange} name={optionText} />}
+                    label={optionText}
                 />
-                <FormControlLabel
-                    control={<Checkbox checked={jason} onChange={handleChange} name="jason" />}
-                    label="Jason Killian"
-                />
-                <FormControlLabel
-                    control={<Checkbox checked={antoine} onChange={handleChange} name="antoine" />}
-                    label="Antoine Llorca"
-                />
+            ))}
             </FormGroup>
-            <FormHelperText>Be careful</FormHelperText>
+            <FormHelperText>An answer is required.</FormHelperText>
         </FormControl>
     );
 }

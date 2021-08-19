@@ -3,7 +3,7 @@
  */
 import React from 'react';
 
-import { SurveyStackQuestions } from './questionnaireTypes';    
+import { SurveyStackQuestions } from './questions/questionnaireTypes';    
 import QuestionManager from './questions/QuestionManager';
 
 
