@@ -20,3 +20,24 @@ export type StackQuestion = {
     fieldName: string,
     options?: DropdownOption[] | CheckboxOption[],
 };
+
+
+interface SurveyStackSchemaProperties {
+    [name: string]: any
+}
+
+interface SurveyStackSchemaDependency {
+    [name: string]: any
+}
+
+interface SurveyStackSchema {
+    type: string;
+    properties: SurveyStackSchemaProperties;
+    dependencies: SurveyStackSchemaDependency;
+    propertyOrder: string[];
+}
+
+export interface SurveyStackQuestions {
+    options: any;
+    schema: SurveyStackSchema;
+}

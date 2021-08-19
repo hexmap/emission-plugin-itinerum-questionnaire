@@ -1,5 +1,5 @@
 /* 
- * www/itinerum_questionnaire/QuestionStack.tsx
+ * lib/itinerum-survey-component.tsx
  */
 import React, { useMemo, useRef } from 'react';
 import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
@@ -8,14 +8,22 @@ import Box from '@material-ui/core/Box';
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 
-import { StackQuestion } from './questionnaireTypes';
+import { SurveyStackQuestions } from './questionnaireTypes';    
+import SelectOneQuestion from './questions/SelectOne';
+import SelectManyQuestion from './questions/SelectMany';
+import EmailQuestion from './questions/Email';
+import MapMarkerQuestion from './questions/MapMarker';
+import NumberQuestion from './questions/Number';
+import TextBoxQuestion from './questions/TextBox';
+
 
 const questionMap: {[key: string]: any} = {
-    dropdown: undefined,
-    checkbox: undefined,
-    number: undefined,
-    address: undefined,
-    textBox: undefined,
+    select: SelectOneQuestion,
+    'select-many': SelectManyQuestion,
+    integer: NumberQuestion,
+    'map-marker': MapMarkerQuestion,
+    'text-area': TextBoxQuestion,
+    email: EmailQuestion,
 };
 
 
@@ -52,30 +60,8 @@ const useStyles = makeStyles((theme: Theme) =>
     }),
 );
 
-interface SurveyStackSchemaProperties {
-    [name: string]: any
-}
-
-interface SurveyStackSchemaDependency {
-    [name: string]: any
-}
-
-interface SurveyStackSchema {
-    type: string;
-    properties: SurveyStackSchemaProperties;
-    dependencies: SurveyStackSchemaDependency;
-    propertyOrder: string[];
-}
-
-interface SurveyStackQuestions {
-    options: any;
-    schema: SurveyStackSchema;
-}
-
 
 export interface QuestionStackProps {
-    // questions: StackQuestion[];
-    // stackQuestions: any;
     stackQuestions: SurveyStackQuestions;
 }
 
@@ -83,7 +69,7 @@ const ItinerumQuestionStack = (props: QuestionStackProps) => {
     const classes = useStyles();
     const stackRef = useRef(null);
 
-    console.log(props);
+    const fields = props.stackQuestions.options.fields;
     const properties = props.stackQuestions.schema.properties;
     const propertyOrder = props.stackQuestions.schema.propertyOrder;
 
@@ -109,28 +95,23 @@ const ItinerumQuestionStack = (props: QuestionStackProps) => {
             return <div>abc</div>
         }
 
-        return propertyOrder.map((propertyName, index) => {
-            // const Question = questionMap[question.type];
-            const title = properties[propertyName].title;
+        // map schema properties in order to questions cards
+        return propertyOrder.map(propertyName => {
+            const fieldType = fields[propertyName].type;
+            const Question = questionMap[fieldType];
+            const questionProps = properties[propertyName];
+            console.log(propertyName, fieldType);
 
             return (
-                <div>{title}</div>
-        //         // <Question
-        //             // id={question.id}
-        //             // title={question.title}
-        //             // fieldName={question.fieldName}
-        //             // options={question.options}
-        //             // deleteQuestion={handleDeleteQuestion}
-        //             // saveQuestion={saveQuestion}
-        //         // />
+                <Question {...questionProps} />
             );
         })        
-    }, [properties]);
+    }, [properties]) as JSX.Element[];
 
     return (
         <div>
             <div ref={stackRef}>
-                {propertyOrder.length > 0 ? memoizedStack : placeholderQuestion}
+                {propertyOrder.length > 0 ? memoizedStack[1] : placeholderQuestion}
             </div>
         </div>
     );
